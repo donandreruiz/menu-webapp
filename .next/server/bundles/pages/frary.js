@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,7 +102,7 @@ var Layout = function Layout(props) {
       fileName: _jsxFileName,
       lineNumber: 9
     }
-  }, "My title!"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
+  }, "5C Eats"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("link", {
     rel: "stylesheet",
     href: "https://bootswatch.com/4/lux/bootstrap.min.css",
     __source: {
@@ -152,7 +152,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
- // parse date to macth with format of JSON from ASPC such as 'fri
+ // parse date to macth with format of JSON from ASPC such as 'fri'
 
 var options = {
   weekday: 'long'
@@ -186,7 +186,16 @@ function (_React$Component) {
         arrayMenus: [],
         fraryBreakfast: [],
         fraryLunch: [],
-        fraryDinner: [] //calls to fetch the data and create the clock like widget
+        fraryDinner: [],
+        frankBreakfast: [],
+        frankLunch: [],
+        frankDinner: [],
+        cmcBreakfast: [],
+        cmcLunch: [],
+        cmcDinner: [],
+        pitzerBreakfast: [],
+        pitzerLunch: [],
+        pitzerDinner: [] //calls to fetch the data and create the clock like widget
 
       }
     }), _temp));
@@ -213,6 +222,7 @@ function (_React$Component) {
 
         var menus = _this2.state.arrayMenus;
         var arraySize = _this2.state.arrayMenus.length; //populate array for breakfast, lunch, etc for each dining hall
+        // fri is just for testing purposes as I am doing this Sat and its empty lol
 
         for (var i = 0; i < arraySize; i++) {
           if (menus[i].dining_hall == 'frary' && menus[i].day == 'fri') {
@@ -227,6 +237,54 @@ function (_React$Component) {
             } else if (menus[i].meal == 'dinner') {
               _this2.setState({
                 fraryDinner: menus[i].food_items
+              });
+            }
+          }
+
+          if (menus[i].dining_hall == 'frank' && menus[i].day == 'fri') {
+            if (menus[i].meal == 'breakfast') {
+              _this2.setState({
+                frankBreakfast: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'lunch') {
+              _this2.setState({
+                frankLunch: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'dinner') {
+              _this2.setState({
+                frankDinner: menus[i].food_items
+              });
+            }
+          }
+
+          if (menus[i].dining_hall == 'cmc' && menus[i].day == 'fri') {
+            if (menus[i].meal == 'breakfast') {
+              _this2.setState({
+                cmcBreakfast: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'lunch') {
+              _this2.setState({
+                cmcLunch: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'dinner') {
+              _this2.setState({
+                cmcDinner: menus[i].food_items
+              });
+            }
+          }
+
+          if (menus[i].dining_hall == 'pitzer' && menus[i].day == 'fri') {
+            if (menus[i].meal == 'breakfast') {
+              _this2.setState({
+                pitzerBreakfast: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'lunch') {
+              _this2.setState({
+                pitzerLunch: menus[i].food_items
+              });
+            } else if (menus[i].meal == 'dinner') {
+              _this2.setState({
+                pitzerDinner: menus[i].food_items
               });
             }
           }
@@ -253,105 +311,260 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // return the breakfast array for now, I suspect we are going to have to 
+      var breakfast = '';
+      var lunch = '';
+      var dinner = ''; // return the breakfast array for now, I suspect we are going to have to 
       // use a conditional and check the props passed in by each page and see 
       //if what dining hall is and render accordingly 
       //i.e if(this.props.diningHall == 'frary'){
       //     render the frary elements 
       // }
+
+      if (this.props.diningHall == 'frary') {
+        breakfast = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 124
+          }
+        }, this.state.fraryBreakfast.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 125
+            }
+          }, menu);
+        }));
+        lunch = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 128
+          }
+        }, this.state.fraryLunch.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 129
+            }
+          }, menu);
+        }));
+        dinner = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 132
+          }
+        }, this.state.fraryDinner.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 133
+            }
+          }, menu);
+        }));
+      }
+
+      if (this.props.diningHall == 'frank') {
+        breakfast = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 140
+          }
+        }, this.state.frankBreakfast.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 141
+            }
+          }, menu);
+        }));
+        lunch = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 144
+          }
+        }, this.state.frankLunch.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 145
+            }
+          }, menu);
+        }));
+        dinner = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 148
+          }
+        }, this.state.frankDinner.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 149
+            }
+          }, menu);
+        }));
+      }
+
+      if (this.props.diningHall == 'cmc') {
+        breakfast = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 156
+          }
+        }, this.state.cmcBreakfast.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 157
+            }
+          }, menu);
+        }));
+        lunch = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 160
+          }
+        }, this.state.cmcLunch.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 161
+            }
+          }, menu);
+        }));
+        dinner = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 164
+          }
+        }, this.state.cmcDinner.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 165
+            }
+          }, menu);
+        }));
+      }
+
+      if (this.props.diningHall == 'pitzer') {
+        breakfast = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 172
+          }
+        }, this.state.pitzerBreakfast.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 173
+            }
+          }, menu);
+        }));
+        lunch = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 176
+          }
+        }, this.state.pitzerLunch.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 177
+            }
+          }, menu);
+        }));
+        dinner = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
+          className: "list-unstyled",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 180
+          }
+        }, this.state.pitzerDinner.map(function (menu) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+            key: menu.id,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 181
+            }
+          }, menu);
+        }));
+      }
+
+      if (week_day_parsed == 'sat' || week_day_parsed == 'sun') {}
+
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76
+          lineNumber: 191
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77
+          lineNumber: 192
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h6", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78
+          lineNumber: 193
         }
       }, "The day and current time is: ", this.state.curTime), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79
+          lineNumber: 194
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80
+          lineNumber: 195
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h3", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81
+          lineNumber: 196
         }
-      }, "Breakfast"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
-        className: "list-group",
+      }, "Breakfast"), breakfast, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82
-        }
-      }, this.state.fraryBreakfast.map(function (menu) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
-          key: menu.id,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 83
-          }
-        }, menu);
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 85
+          lineNumber: 198
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h3", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86
+          lineNumber: 199
         }
-      }, "Lunch"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
-        className: "list-group",
+      }, "Lunch"), lunch, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87
-        }
-      }, this.state.fraryLunch.map(function (menu) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
-          key: menu.id,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 88
-          }
-        }, menu);
-      })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 90
+          lineNumber: 201
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h3", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 91
+          lineNumber: 202
         }
-      }, "Dinner"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("ul", {
-        className: "list-group",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 92
-        }
-      }, this.state.fraryDinner.map(function (menu) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
-          key: menu.id,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 93
-          }
-        }, menu);
-      })));
+      }, "Dinner"), dinner);
     }
   }]);
 
@@ -436,7 +649,7 @@ var Navbar = function Navbar() {
       fileName: _jsxFileName,
       lineNumber: 15
     }
-  }, "Home ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
+  }, "Home", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("span", {
     className: "sr-only",
     __source: {
       fileName: _jsxFileName,
@@ -460,7 +673,61 @@ var Navbar = function Navbar() {
       fileName: _jsxFileName,
       lineNumber: 20
     }
-  }, "Frary"))))));
+  }, "Frary"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+    className: "nav-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 23
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+    href: "/frank",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+    className: "nav-link",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    }
+  }, "Frank"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+    className: "nav-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+    href: "/cmc",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+    className: "nav-link",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    }
+  }, "CMC"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("li", {
+    className: "nav-item",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+    href: "/pitzer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+    className: "nav-link",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    }
+  }, "Pitzer"))))));
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Navbar);
@@ -500,7 +767,7 @@ var Frary = function Frary() {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/frary.js");

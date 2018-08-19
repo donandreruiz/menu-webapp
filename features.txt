@@ -1,0 +1,31 @@
+Features
+
+- ratings (stars/comments) per item 
+- ratings (stars/comments) per dining hall
+- dining hall account admin privileges to ratings and suggestions
+- suggestions/comments for dining halls 
+    - these can then be upvoted or downvoted like yik-yak to see top ideas that people want
+- allow user to favorite certain items 
+- notify users when favorited items are being served that day
+- create "friends" network
+    - create "check-in" system so users can see where "friends" are eating
+- live comments/message board about line length, food amount, seating availability
+
+Questions:
+- how do we handle when dining hall menu is not posted 
+- users that have not created an account/logged in
+    - they should still be able to see the menus just not get above features 
+- how many times are we gonna make the call to ASPC? 
+    - if it is just once then we can store that in the state? and each day make a new call and replace the data in the store?
+
+
+To Do:
+- we will need to create login 
+- figure out a dev environment where we can simulate data from ASPC
+- create databases for many things
+    - Users: 
+        - USERID (can be email probably), favorite items, ???, ???, ???
+    - Comments/Suggestions:
+        - dont need an author since all comments should be anonymous 
+        - MESSAGE, Upvotes, Downvotes, DiningHall
+        OR should this be 7 rows (one for each dining hall) and then keep track of the messages that way (i dont think thats right)

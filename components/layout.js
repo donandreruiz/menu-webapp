@@ -6,7 +6,7 @@ import Head from 'next/head';
 const Layout = (props) => (
     <div>
         <Head>
-            <title>My title!</title>
+            <title>5C Eats</title>
             <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css"/>
         </Head>
         <Navbar />

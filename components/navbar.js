@@ -12,12 +12,27 @@ const Navbar = () => (
             <ul className="navbar-nav">
                 <li className="nav-item active">
                     <Link href='/'>
-                        <a className="nav-link">Home <span className="sr-only">(current)</span></a>
+                        <a className="nav-link">Home<span className="sr-only">(current)</span></a>
                     </Link>
                 </li>
                 <li className="nav-item">
                     <Link href='/frary'>
                         <a className="nav-link">Frary</a>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link href='/frank'>
+                        <a className="nav-link">Frank</a>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link href='/cmc'>
+                        <a className="nav-link">CMC</a>
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link href='/pitzer'>
+                        <a className="nav-link">Pitzer</a>
                     </Link>
                 </li>
 
